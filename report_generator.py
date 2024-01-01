@@ -35,7 +35,11 @@ def analyze_data(data):
 
     # Initialize field counts
     for key in data[0].keys():
-        report['field_counts'][key] = sum(item[key] is not None for item in data)
+        if key != 'is_private_owner':
+            report['field_counts'][key] = sum(item[key] is not None for item in data)
+        else:
+            # Specifically count True values for is_private_owner
+            report['field_counts']['is_private_owner'] = sum(item.get(key, False) for item in data)
 
     # Calculate overall stats
     for key in ['price', 'area', 'price_per_square_meter']:
@@ -56,6 +60,19 @@ def analyze_data(data):
             'count': len(items),
             'stats': {key: compute_stats(items, key) for key in ['price', 'area', 'price_per_square_meter']}
         })
+
+    # Sort daily_stats by date (from oldest to newest)
+    report['daily_stats'].sort(key=lambda x: datetime.strptime(x['date'], '%Y-%m-%d'))
+
+    # Check if there are any daily stats
+    if report['daily_stats']:
+        # Extract the first and last item from sorted daily_stats
+        first_item = report['daily_stats'][0]
+        last_item = report['daily_stats'][-1]
+
+        # Add min_date and max_date to stats
+        report['stats']['min_date'] = first_item['date']
+        report['stats']['max_date'] = last_item['date']
 
     for province, items in province_data.items():
         report['provinces'][province] = {

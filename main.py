@@ -53,6 +53,7 @@ import json
 import os
 import glob
 from report_generator import analyze_data
+from pdf_generator import generate_pdf  # Ensure this module is created with the generate_pdf function
 
 def load_parser(origin):
     parser_module = __import__(f"parsers.{origin}", fromlist=[''])
@@ -98,3 +99,6 @@ if __name__ == "__main__":
         report_data = analyze_data(extracted_data)
         report_file_path = f"reports/{origin}.json"
         save_report(report_data, report_file_path)
+
+        # Generate and save the PDF report for each origin
+        generate_pdf(report_data, origin)

@@ -12,21 +12,21 @@ def generate_report(data):
 
     total_listings = 25226
     date_range = f"{min_date} - {max_date}"
-    price_range = f"From {format_number(price_stats['min'])} PLN to {format_number(price_stats['max'])} PLN"
-    avg_price = format_number(price_stats["avg"]) + " PLN"
-    median_price = format_number(price_stats["median"]) + " PLN"
-    stddev_price = format_number(price_stats["stddev"]) + " PLN"
-    total_price_volume = format_number(price_stats["total"]) + " PLN"
+    price_range = f"From {format_number(price_stats['min'])} EUR to {format_number(price_stats['max'])} EUR"
+    avg_price = format_number(price_stats["avg"]) + " EUR"
+    median_price = format_number(price_stats["median"]) + " EUR"
+    stddev_price = format_number(price_stats["stddev"]) + " EUR"
+    total_price_volume = format_number(price_stats["total"]) + " EUR"
     area_range = f"From {format_number(area_stats['min'])} sqm to {format_number(area_stats['max'])} sqm"
     avg_area = format_number(area_stats["avg"]) + " sqm"
     median_area = format_number(area_stats["median"]) + " sqm"
     stddev_area = format_number(area_stats["stddev"]) + " sqm"
     total_area = format_number(area_stats["total"]) + " sqm"
-    pp_sqm_range = f"From {format_number(price_per_sqm_stats['min'])} PLN/sqm to {format_number(price_per_sqm_stats['max'])} PLN/sqm"
-    avg_pp_sqm = format_number(price_per_sqm_stats["avg"]) + " PLN/sqm"
-    median_pp_sqm = format_number(price_per_sqm_stats["median"]) + " PLN/sqm"
-    stddev_pp_sqm = format_number(price_per_sqm_stats["stddev"]) + " PLN/sqm"
-    total_pp_sqm_volume = format_number(price_per_sqm_stats["total"]) + " PLN"
+    pp_sqm_range = f"From {format_number(price_per_sqm_stats['min'])} EUR/sqm to {format_number(price_per_sqm_stats['max'])} EUR/sqm"
+    avg_pp_sqm = format_number(price_per_sqm_stats["avg"]) + " EUR/sqm"
+    median_pp_sqm = format_number(price_per_sqm_stats["median"]) + " EUR/sqm"
+    stddev_pp_sqm = format_number(price_per_sqm_stats["stddev"]) + " EUR/sqm"
+    total_pp_sqm_volume = format_number(price_per_sqm_stats["total"]) + " EUR"
 
     report = f"General Market Overview\n" \
              f"Total Listings: {total_listings}\n" \

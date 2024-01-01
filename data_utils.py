@@ -22,3 +22,17 @@ def format_date(date):
     if date:
         return date.strftime('%Y-%m-%dT%H:%M:%S%z')
     return None
+
+# Load exchange rates from the JSON file
+def load_exchange_rates(file_name):
+    with open(file_name, 'r') as file:
+        return json.load(file)
+
+exchange_rates = load_exchange_rates('exchange_rates.json')
+
+def convert_to_eur(price, currency, date, exchange_rates):
+    if currency == "EUR" or price is None or date not in exchange_rates:
+        return price
+    date_exchange_rates = exchange_rates.get(date, {})
+    rate = date_exchange_rates.get(currency)
+    return price / rate if rate else None

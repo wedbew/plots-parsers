@@ -39,7 +39,7 @@ def parse_data(data):
                 "is_private_owner": safe_get(listing, ["isPrivateOwner"]),
                 "area": safe_get(listing, ["areaInSquareMeters"]),
                 "unit": "square_meter",
-                "date_created": date_created_str,  # Original date format
+                "date_created": format_date(date_created),
                 "total_images": safe_get(listing, ["totalPossibleImages"]),
                 "description": safe_get(listing, ["seo", "details", "description"]),
                 "date_scraped": format_date(date_scraped)

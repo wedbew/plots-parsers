@@ -10,14 +10,14 @@ def generate_report(data):
     min_date = data["stats"]["min_date"]
     max_date = data["stats"]["max_date"]
 
-    total_listings = 25226
+    total_listings = data["stats"]["total_listings"]
     date_range = f"{min_date} - {max_date}"
     price_range = f"From {format_number(price_stats['min'])} EUR to {format_number(price_stats['max'])} EUR"
     avg_price = format_number(price_stats["avg"]) + " EUR"
     median_price = format_number(price_stats["median"]) + " EUR"
     stddev_price = format_number(price_stats["stddev"]) + " EUR"
     total_price_volume = format_number(price_stats["total"]) + " EUR"
-    area_range = f"From {format_number(area_stats['min'])} sqm to {format_number(area_stats['max'])} sqm"
+    area_range = f"From {format_number(area_stats['min'])} sqm to {format_number(area_stats['max'])} sqm" if area_stats is not None else "Area stats not available"
     avg_area = format_number(area_stats["avg"]) + " sqm"
     median_area = format_number(area_stats["median"]) + " sqm"
     stddev_area = format_number(area_stats["stddev"]) + " sqm"

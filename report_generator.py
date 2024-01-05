@@ -41,6 +41,7 @@ def analyze_data(data):
             # Specifically count True values for is_private_owner
             report['field_counts']['is_private_owner'] = sum(item.get(key, False) for item in data)
 
+    report['stats']['total_listings'] = len(data)
     # Calculate overall stats
     for key in ['price', 'area', 'price_per_square_meter']:
         report['stats'][key] = compute_stats(data, key)
